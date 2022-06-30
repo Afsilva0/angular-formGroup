@@ -1,0 +1,72 @@
+<div class="container text-center m-5">
+  <h3 class="mb-5">Formulario Personal</h3>
+
+  <form [formGroup]="form">
+    <div class="mb-3">
+      <label for="name" class="form-label">Nombre:</label>
+      <input
+        type="text"
+        formControlName="name"
+        class="form-control"
+        id="name"
+        placeholder="Escriba el nombre"
+      />
+    </div>
+    <p *ngIf="form.get('name').errors && form.get('name').dirty">
+      <small *ngIf="form.get('name').hasError('required')">
+        Este Campo es Requerido</small
+      >
+      <small *ngIf="form.get('name').hasError('minlength')">
+        Este Campo es de minimo 4
+      </small>
+      <small *ngIf="form.get('name').hasError('maxlength')">
+        Este Campo es de maximo 10
+      </small>
+    </p>
+
+    <div class="mb-3">
+      <label for="apellido" class="form-label">Apellidos:</label>
+      <input
+        type="text"
+        formControlName="apellido"
+        class="form-control"
+        id="apellido"
+        placeholder="Escriba los apellidos"
+      />
+    </div>
+
+    <p *ngIf="form.get('apellido').errors && form.get('apellido').dirty">
+      <small *ngIf="form.get('apellido').hasError('required')">
+        Este Campo es Requerido</small
+      >
+      <small *ngIf="form.get('apellido').hasError('minlength')">
+        Este Campo es de minimo 4
+      </small>
+      <small *ngIf="form.get('apellido').hasError('maxlength')">
+        Este Campo es de maximo 10
+      </small>
+    </p>
+
+    <div class="mb-3">
+      <label for="date" class="form-label">Fecha:</label>
+      <input
+        type="date"
+        formControlName="date"
+        class="form-control"
+        id="date"
+      />
+    </div>
+
+    <p *ngIf="form.get('date').errors && form.get('date').touched">
+      <small *ngIf="form.get('date').hasError('required')">
+        Este Campo es Requerido</small
+      >
+    </p>
+  </form>
+
+  <form [formGroup]="form" (ngSubmit)="save($event)">
+    <button class="btn btn-primary" [disabled]="form.invalid" type="submit">
+      Guardar
+    </button>
+  </form>
+</div>

@@ -1,10 +1,26 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [];
+import { FormComponent } from './component/form/form.component';
+const routes: Routes = [
+  {
+    path: '',
+    redirectTo: 'Form',
+    pathMatch: 'full',
+  },
+  {
+    path: '**',
+    redirectTo: 'Form',
+    pathMatch: 'full',
+  },
+  {
+    path: 'Form',
+    component: FormComponent,
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
